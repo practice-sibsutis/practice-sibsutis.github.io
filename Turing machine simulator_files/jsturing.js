@@ -1193,7 +1193,25 @@ return (msw << 16) | (lsw & 0xFFFF);
 }
 }
 
-function fff() {
+function get_code() {
    var nTranslatedHeadPosition = nHeadPosition - nTapeOffset;
-   alert(md5(nTranslatedHeadPosition + sTape));
+   var i = 0;
+   while((sTape[i] == '_') && (i < sTape.length)) {
+      i += 1;
+   }
+
+   var n = nTranslatedHeadPosition;
+   if ( i > 0 ) {
+      n -= i;
+      text = sTape.substring(i, sTape.length); 
+   }
+   i = text.length - 1;
+   while ( (text[i] == '_') && (i > -1)) {
+      i -= 1;
+   }
+   if ( i > -1 ) {
+      text = text.substring(0, i + 1);
+   }
+      
+   alert(md5(n + text));
 }
