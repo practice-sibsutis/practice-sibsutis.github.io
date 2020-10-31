@@ -1195,5 +1195,5 @@ return (msw << 16) | (lsw & 0xFFFF);
 
 function fff() {
    var nTranslatedHeadPosition = nHeadPosition - nTapeOffset;
-   alert(nTranslatedHeadPosition + sTape);
+   alert(md5(nTranslatedHeadPosition + sTape));
 }
