@@ -21,6 +21,7 @@ var sTape = "";				/* Contents of TM's tape. Stores all cells that have been vis
 var nTapeOffset = 0;		/* the logical position on TM tape of the first character of sTape */
 var nHeadPosition = 0;		/* the position of the TM's head on its tape. Initially zero; may be negative if TM moves to left */
 var sState = "0";
+var init_tape = "";
 var nSteps = 0;
 var nVariant = 0; /* Machine variant. 0 = standard infinite tape, 1 = tape infinite in one direction only, 2 = non-deterministic TM */
 var hRunTimer = null;
@@ -199,6 +200,7 @@ function Reset()
 	sInitialTape = sInitialTape.replace( /\*/g, "" ).replace( / /g, "_" );
 	if( sInitialTape == "" ) sInitialTape = " ";
 	sTape = sInitialTape;
+        init_tape = sInitialTape;
 	nTapeOffset = 0;
 	
 	/* Initialise state */
@@ -1214,6 +1216,6 @@ function get_code() {
          text = text.substring(0, i + 1);
       }
       
-      alert(md5(n + text));
+      alert(md5(n + init_tape + text));
    }
 }
